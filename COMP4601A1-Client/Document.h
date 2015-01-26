@@ -11,23 +11,23 @@
 @interface Document : NSObject
 
 {
-    NSInteger *docId;
-    NSInteger *score;
+    NSString *identifier;
+    NSString *score;
     NSString *name;
-    NSString *description;
+    NSString *text;
     NSMutableArray *tags;
     NSMutableArray *links;
 }
-@property (nonatomic) NSInteger *docId;
-@property (nonatomic) NSInteger *score;
+@property (nonatomic) NSString *identifier;
+@property (nonatomic) NSString *score;
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSString *description;
+@property (nonatomic) NSString *text;
 @property (nonatomic) NSMutableArray *tags;
 @property (nonatomic) NSMutableArray *links;
 
 -(id) init;
--(void)setDocId:(NSInteger *)dId;
--(void)setScore:(NSInteger *)s;
+-(void)setDocId:(NSString *)dId;
+-(void)setScore:(NSString *)s;
 -(void)setName:(NSString *)n;
 -(void)setDescription:(NSString *)d;
 -(void)setTags:(NSMutableArray *)t;

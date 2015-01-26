@@ -32,7 +32,9 @@
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   _docs = [mappingResult array];
-                                                  NSLog(@" %@", _docs);
+                                                  NSLog(@"DOCS %@", _docs);
+                                                  
+                                                  
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   NSLog(@"What do you mean by 'there is no coffee?': %@", error);
@@ -43,7 +45,7 @@
 - (void)configureRestKit
 {
     // initialize AFNetworking HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda"];
+    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:7778/COMP4601A1/rest/sda"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // initialize RestKit
@@ -51,7 +53,12 @@
     // setup object mapping
     RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
     [documentMapping addAttributeMappingsFromDictionary:@{
-                                                         @"name": @"name"
+                                                          @"id" : @"identifier",
+                                                          @"score" : @"score",
+                                                          @"name": @"name",
+                                                          @"text": @"text",
+                                                          @"tags": @"tags",
+                                                          @"links" : @"links",
                                                          }];
     
     // register mappings with the provider using a response descriptor
@@ -59,10 +66,9 @@
     [RKResponseDescriptor responseDescriptorWithMapping:documentMapping
                                                  method:RKRequestMethodGET
                                             pathPattern:nil
-                                                keyPath:@"documents.document"
+                                                keyPath:@"document"
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
-
+    
     [objectManager addResponseDescriptor:responseDescriptor];
 }
 
