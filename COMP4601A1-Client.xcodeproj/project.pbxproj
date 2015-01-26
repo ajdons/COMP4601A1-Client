@@ -17,6 +17,15 @@
 		1BCB93C21A745AA200A0F689 /* COMP4601A1_ClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB93C11A745AA200A0F689 /* COMP4601A1_ClientTests.m */; };
 		1BCB93CE1A74685E00A0F689 /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB93CD1A74685E00A0F689 /* Document.m */; };
 		1BCB93D11A747A4B00A0F689 /* SearchDocController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB93D01A747A4B00A0F689 /* SearchDocController.m */; };
+		1BD2C01C1A75B83A00DF0A0D /* libPods-RestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD2C01B1A75B83A00DF0A0D /* libPods-RestKit.a */; };
+		1BD2C0221A75B87F00DF0A0D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD2C01D1A75B87F00DF0A0D /* CFNetwork.framework */; };
+		1BD2C0231A75B87F00DF0A0D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD2C01E1A75B87F00DF0A0D /* CoreData.framework */; };
+		1BD2C0241A75B87F00DF0A0D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD2C01F1A75B87F00DF0A0D /* MobileCoreServices.framework */; };
+		1BD2C0251A75B87F00DF0A0D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD2C0201A75B87F00DF0A0D /* Security.framework */; };
+		1BD2C0261A75B87F00DF0A0D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD2C0211A75B87F00DF0A0D /* SystemConfiguration.framework */; };
+		1BD2C02C1A75C47200DF0A0D /* RKXMLReaderSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2C02B1A75C47200DF0A0D /* RKXMLReaderSerialization.m */; };
+		1BD2C02F1A75C4DA00DF0A0D /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD2C02E1A75C4DA00DF0A0D /* XMLReader.m */; };
+		C9ADA369AD897A05ADDF0AF2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A66DD144226338B05C43DEFC /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +58,19 @@
 		1BCB93CD1A74685E00A0F689 /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 		1BCB93CF1A747A4B00A0F689 /* SearchDocController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDocController.h; sourceTree = "<group>"; };
 		1BCB93D01A747A4B00A0F689 /* SearchDocController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchDocController.m; sourceTree = "<group>"; };
+		1BD2C01B1A75B83A00DF0A0D /* libPods-RestKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-RestKit.a"; path = "Pods/build/Debug-iphoneos/libPods-RestKit.a"; sourceTree = "<group>"; };
+		1BD2C01D1A75B87F00DF0A0D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1BD2C01E1A75B87F00DF0A0D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1BD2C01F1A75B87F00DF0A0D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		1BD2C0201A75B87F00DF0A0D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1BD2C0211A75B87F00DF0A0D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1BD2C02A1A75C47200DF0A0D /* RKXMLReaderSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RKXMLReaderSerialization.h; path = "../../../Downloads/RKXMLReaderSerialization-master/RKXMLReaderSerialization.h"; sourceTree = "<group>"; };
+		1BD2C02B1A75C47200DF0A0D /* RKXMLReaderSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RKXMLReaderSerialization.m; path = "../../../Downloads/RKXMLReaderSerialization-master/RKXMLReaderSerialization.m"; sourceTree = "<group>"; };
+		1BD2C02D1A75C4DA00DF0A0D /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLReader.h; path = "../../../Downloads/XML-to-NSDictionary-master/XMLReader.h"; sourceTree = "<group>"; };
+		1BD2C02E1A75C4DA00DF0A0D /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLReader.m; path = "../../../Downloads/XML-to-NSDictionary-master/XMLReader.m"; sourceTree = "<group>"; };
+		33589EB8E0C213F42A3097FC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5669B5B5A7B5DEDB288E69D9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A66DD144226338B05C43DEFC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +78,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD2C0221A75B87F00DF0A0D /* CFNetwork.framework in Frameworks */,
+				1BD2C0231A75B87F00DF0A0D /* CoreData.framework in Frameworks */,
+				1BD2C0241A75B87F00DF0A0D /* MobileCoreServices.framework in Frameworks */,
+				1BD2C0251A75B87F00DF0A0D /* Security.framework in Frameworks */,
+				1BD2C0261A75B87F00DF0A0D /* SystemConfiguration.framework in Frameworks */,
+				1BD2C01C1A75B83A00DF0A0D /* libPods-RestKit.a in Frameworks */,
+				C9ADA369AD897A05ADDF0AF2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,12 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180A35F1219F8AD40457F9E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5669B5B5A7B5DEDB288E69D9 /* Pods.debug.xcconfig */,
+				33589EB8E0C213F42A3097FC /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		1BCB93961A745AA200A0F689 = {
 			isa = PBXGroup;
 			children = (
 				1BCB93A11A745AA200A0F689 /* COMP4601A1-Client */,
 				1BCB93BE1A745AA200A0F689 /* COMP4601A1-ClientTests */,
 				1BCB93A01A745AA200A0F689 /* Products */,
+				180A35F1219F8AD40457F9E0 /* Pods */,
+				89A7372111DDFB08B19A549A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +130,10 @@
 		1BCB93A11A745AA200A0F689 /* COMP4601A1-Client */ = {
 			isa = PBXGroup;
 			children = (
+				1BD2C02D1A75C4DA00DF0A0D /* XMLReader.h */,
+				1BD2C02E1A75C4DA00DF0A0D /* XMLReader.m */,
+				1BD2C02A1A75C47200DF0A0D /* RKXMLReaderSerialization.h */,
+				1BD2C02B1A75C47200DF0A0D /* RKXMLReaderSerialization.m */,
 				1BCB93CB1A74661D00A0F689 /* Models */,
 				1BCB93A61A745AA200A0F689 /* AppDelegate.h */,
 				1BCB93A71A745AA200A0F689 /* AppDelegate.m */,
@@ -142,6 +186,20 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		89A7372111DDFB08B19A549A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1BD2C01D1A75B87F00DF0A0D /* CFNetwork.framework */,
+				1BD2C01E1A75B87F00DF0A0D /* CoreData.framework */,
+				1BD2C01F1A75B87F00DF0A0D /* MobileCoreServices.framework */,
+				1BD2C0201A75B87F00DF0A0D /* Security.framework */,
+				1BD2C0211A75B87F00DF0A0D /* SystemConfiguration.framework */,
+				1BD2C01B1A75B83A00DF0A0D /* libPods-RestKit.a */,
+				A66DD144226338B05C43DEFC /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,9 +207,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1BCB93C51A745AA200A0F689 /* Build configuration list for PBXNativeTarget "COMP4601A1-Client" */;
 			buildPhases = (
+				AE3A5505758A873F48A2C1D1 /* Check Pods Manifest.lock */,
 				1BCB939B1A745AA200A0F689 /* Sources */,
 				1BCB939C1A745AA200A0F689 /* Frameworks */,
 				1BCB939D1A745AA200A0F689 /* Resources */,
+				8DF69AB859A1CBB2BCE5C129 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,6 +297,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8DF69AB859A1CBB2BCE5C129 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE3A5505758A873F48A2C1D1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1BCB939B1A745AA200A0F689 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -244,6 +337,8 @@
 			files = (
 				1BCB93D11A747A4B00A0F689 /* SearchDocController.m in Sources */,
 				1BCB93AE1A745AA200A0F689 /* CreateDocController.m in Sources */,
+				1BD2C02F1A75C4DA00DF0A0D /* XMLReader.m in Sources */,
+				1BD2C02C1A75C47200DF0A0D /* RKXMLReaderSerialization.m in Sources */,
 				1BCB93A81A745AA200A0F689 /* AppDelegate.m in Sources */,
 				1BCB93AB1A745AA200A0F689 /* LibraryController.m in Sources */,
 				1BCB93CE1A74685E00A0F689 /* Document.m in Sources */,
@@ -367,20 +462,56 @@
 		};
 		1BCB93C61A745AA200A0F689 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5669B5B5A7B5DEDB288E69D9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "COMP4601A1-Client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		1BCB93C71A745AA200A0F689 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33589EB8E0C213F42A3097FC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
+				);
 				INFOPLIST_FILE = "COMP4601A1-Client/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

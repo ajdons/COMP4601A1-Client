@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <RestKit/RestKit.h>
+#import "RKXMLReaderSerialization.h"
+#import "XMLReader.h"
 
 @interface AppDelegate ()
 
