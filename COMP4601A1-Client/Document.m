@@ -10,10 +10,10 @@
 
 @implementation Document
 
-@synthesize docId;
+@synthesize identifier;
 @synthesize score;
 @synthesize name;
-@synthesize description;
+@synthesize text;
 @synthesize tags;
 @synthesize links;
 
@@ -22,20 +22,22 @@
     self = [super init];
     
     if(self){
+        identifier = [[NSString alloc] init];
+        score = [[NSString alloc]init];
         name = [[NSString alloc] init];
-        description = [[NSString alloc]init];
+        text = [[NSString alloc]init];
         tags = [[NSMutableArray alloc] init];
         links = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
--(void)setDocId:(NSInteger *)dId
+-(void)setDocId:(NSString *)dId
 {
-    docId = dId;
+    identifier = dId;
 }
 
--(void)setScore:(NSInteger *)s
+-(void)setScore:(NSString *)s
 {
     score = s;
 }
@@ -47,7 +49,7 @@
 
 -(void)setDescription:(NSString *)d
 {
-    description = d;
+    text = d;
 }
 
 -(void)setTags:(NSMutableArray *)t
