@@ -20,8 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
     [self configureRestKit];
     [self loadDocuments];
+    
+    
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -32,13 +37,18 @@
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   _docs = [mappingResult array];
-                                                  NSLog(@"DOCS %@", _docs);
+                                                  
+                                                  for (Document * doc in _docs){
+                                                      NSLog(@"id: %@", doc.identifier);
+                                                  }
                                                   
                                                   
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   NSLog(@"What do you mean by 'there is no coffee?': %@", error);
                                               }];
+    
+    [self.tableView reloadData];
     
 }
 
@@ -70,6 +80,7 @@
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     
     [objectManager addResponseDescriptor:responseDescriptor];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,6 +103,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
+    
     cell.textLabel.text = [[_docs objectAtIndex:indexPath.row] name];
     return cell;
 }
@@ -99,7 +111,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UIAlertView *messageAlert = [[UIAlertView alloc]
-                                 initWithTitle:@"Row Selected" message:[_docs objectAtIndex:indexPath.row] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                 initWithTitle:@"Row Selected" message:[[_docs objectAtIndex:indexPath.row]name ] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
     // Display Alert Message
     [messageAlert show];
