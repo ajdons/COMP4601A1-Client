@@ -10,6 +10,6 @@
 
 @interface LibraryController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
 
