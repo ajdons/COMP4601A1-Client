@@ -10,12 +10,13 @@
 #import <RestKit.h>
 #import "Document.h"
 #import "RKXMLReaderSerialization.h"
+#import "ViewDocController.h"
 @interface LibraryController ()
 @property (nonatomic, strong) NSArray *docs;
 @end
 
 @implementation LibraryController
-
+@synthesize tableView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,7 +56,7 @@
 - (void)configureRestKit
 {
     // initialize AFNetworking HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:7778/COMP4601A1/rest/sda"];
+    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // initialize RestKit
@@ -116,6 +117,14 @@
     // Display Alert Message
     [messageAlert show];
     
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"docviewsegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        ViewDocController *destViewController = segue.destinationViewController;
+        destViewController.document = [_docs objectAtIndex:indexPath.row];
+    }
 }
 
 @end

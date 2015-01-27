@@ -15,23 +15,23 @@
     NSString *score;
     NSString *name;
     NSString *text;
-    NSMutableArray *tags;
-    NSMutableArray *links;
+    NSString *tags;
+    NSstring *links;
 }
 @property (nonatomic) NSString *identifier;
 @property (nonatomic) NSString *score;
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *text;
-@property (nonatomic) NSMutableArray *tags;
-@property (nonatomic) NSMutableArray *links;
+@property (nonatomic) NSString *tags;
+@property (nonatomic) NSString *links;
 
 -(id) init;
 -(void)setDocId:(NSString *)dId;
 -(void)setScore:(NSString *)s;
 -(void)setName:(NSString *)n;
 -(void)setDescription:(NSString *)d;
--(void)setTags:(NSMutableArray *)t;
--(void)setLinks:(NSMutableArray *)l;
+-(void)setTags:(NSString *)t;
+-(void)setLinks:(NSString *)l;
 -(void)addTag:(NSString *)tag;
 -(void)removeTag:(NSString *)tag;
 -(void)addLink:(NSString *)link;

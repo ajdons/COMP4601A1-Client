@@ -1,33 +1,34 @@
 //
-//  SearchDocController.m
+//  ViewDocController.m
 //  COMP4601A1-Client
 //
-//  Created by Adam Donegan on 2015-01-24.
+//  Created by Adam Donegan on 2015-01-26.
 //  Copyright (c) 2015 Adam Donegan. All rights reserved.
 //
 
-#import "SearchDocController.h"
+#import "ViewDocController.h"
 
-@interface SearchDocController ()
+@interface ViewDocController ()
 
 @end
 
-@implementation SearchDocController
-@synthesize searchBar;
+@implementation ViewDocController
+@synthesize document, idLabel, nameField, textField, tagsField, linksField;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *idl = [[NSString alloc] initWithFormat:@"id: %@", [document identifier]];
+    [idLabel setText:idl];
+    [nameField setText:[document name]];
+    [textField setText:[document text]];
+    [tagsField setText:[[document tags] objectAtIndex:0]];
+    [linksField setText:[[document links] objectAtIndex:0]];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(IBAction)searchDoc:(id)sender
-{
-    NSLog(@"Search Button pressed!!!");
 }
 
 /*
