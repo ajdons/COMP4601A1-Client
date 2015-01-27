@@ -26,8 +26,8 @@
         score = [[NSString alloc]init];
         name = [[NSString alloc] init];
         text = [[NSString alloc]init];
-        tags = [[NSMutableArray alloc] init];
-        links = [[NSMutableArray alloc] init];
+        tags = [[NSString alloc] init];
+        links = [[NSString alloc] init];
     }
     return self;
 }
@@ -52,33 +52,14 @@
     text = d;
 }
 
--(void)setTags:(NSMutableArray *)t
+-(void)setTags:(NSString *)t
 {
     tags  = t;
 }
 
--(void)setLinks:(NSMutableArray *)l
+-(void)setLinks:(NSString *)l
 {
     links = l;
 }
 
--(void)addTag:(NSString *)tag;
-{
-    [tags addObject:tag];
-}
-
--(void)removeTag:(NSString *)tag
-{
-    [tags removeObject:tag];
-}
-
--(void)addLink:(NSString *)link
-{
-    [links addObject:link];
-}
-
--(void)removeLink:(NSString *)link
-{
-    [links removeObject:link];
-}
 @end

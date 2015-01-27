@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BC71F8F1A76F39E004EBA6F /* ViewDocController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC71F8E1A76F39E004EBA6F /* ViewDocController.m */; };
 		1BCB93A51A745AA200A0F689 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB93A41A745AA200A0F689 /* main.m */; };
 		1BCB93A81A745AA200A0F689 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB93A71A745AA200A0F689 /* AppDelegate.m */; };
 		1BCB93AB1A745AA200A0F689 /* LibraryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB93AA1A745AA200A0F689 /* LibraryController.m */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BC71F8D1A76F39E004EBA6F /* ViewDocController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewDocController.h; sourceTree = "<group>"; };
+		1BC71F8E1A76F39E004EBA6F /* ViewDocController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewDocController.m; sourceTree = "<group>"; };
 		1BCB939F1A745AA200A0F689 /* COMP4601A1-Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COMP4601A1-Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BCB93A31A745AA200A0F689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BCB93A41A745AA200A0F689 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 				1BCB93AD1A745AA200A0F689 /* CreateDocController.m */,
 				1BCB93CF1A747A4B00A0F689 /* SearchDocController.h */,
 				1BCB93D01A747A4B00A0F689 /* SearchDocController.m */,
+				1BC71F8D1A76F39E004EBA6F /* ViewDocController.h */,
+				1BC71F8E1A76F39E004EBA6F /* ViewDocController.m */,
 				1BCB93AF1A745AA200A0F689 /* Main.storyboard */,
 				1BCB93B21A745AA200A0F689 /* Images.xcassets */,
 				1BCB93B41A745AA200A0F689 /* LaunchScreen.xib */,
@@ -338,6 +343,7 @@
 				1BCB93D11A747A4B00A0F689 /* SearchDocController.m in Sources */,
 				1BCB93AE1A745AA200A0F689 /* CreateDocController.m in Sources */,
 				1BD2C02F1A75C4DA00DF0A0D /* XMLReader.m in Sources */,
+				1BC71F8F1A76F39E004EBA6F /* ViewDocController.m in Sources */,
 				1BD2C02C1A75C47200DF0A0D /* RKXMLReaderSerialization.m in Sources */,
 				1BCB93A81A745AA200A0F689 /* AppDelegate.m in Sources */,
 				1BCB93AB1A745AA200A0F689 /* LibraryController.m in Sources */,

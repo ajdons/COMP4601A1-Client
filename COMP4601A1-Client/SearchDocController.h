@@ -10,5 +10,6 @@
 
 @interface SearchDocController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 -(IBAction)searchDoc:(id)sender;
 @end
