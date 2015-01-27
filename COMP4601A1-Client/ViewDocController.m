@@ -21,14 +21,18 @@
     [idLabel setText:idl];
     [nameField setText:[document name]];
     [textField setText:[document text]];
-    [tagsField setText:[[document tags] objectAtIndex:0]];
-    [linksField setText:[[document links] objectAtIndex:0]];
+    [tagsField setText:[document tags]];
+    [linksField setText:[document links]];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)backButton:(id)sender {
+    
+    
 }
 
 /*

@@ -16,7 +16,7 @@
     NSString *name;
     NSString *text;
     NSString *tags;
-    NSstring *links;
+    NSString *links;
 }
 @property (nonatomic) NSString *identifier;
 @property (nonatomic) NSString *score;
@@ -36,6 +36,7 @@
 -(void)removeTag:(NSString *)tag;
 -(void)addLink:(NSString *)link;
 -(void)removeLink:(NSString *)link;
+
 
 
 @end
