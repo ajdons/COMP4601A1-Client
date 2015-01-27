@@ -19,17 +19,23 @@
 @synthesize tableView;
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  
     
+    
+    [super viewDidLoad];
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+
+    
     
     [self configureRestKit];
     [self loadDocuments];
+   
+
     
     
-    
-    // Do any additional setup after loading the view, typically from a nib.
+       // Do any additional setup after loading the view, typically from a nib.
 }
 
 -(void) loadDocuments
@@ -38,6 +44,8 @@
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   _docs = [mappingResult array];
+                                                  
+                                                  [self.tableView reloadData];
                                                   
                                                   for (Document * doc in _docs){
                                                       NSLog(@"id: %@", doc.identifier);
@@ -49,14 +57,13 @@
                                                   NSLog(@"What do you mean by 'there is no coffee?': %@", error);
                                               }];
     
-    [self.tableView reloadData];
     
 }
 
 - (void)configureRestKit
 {
     // initialize AFNetworking HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda"];
+    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:7778/COMP4601A1/rest/sda"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // initialize RestKit
@@ -98,7 +105,7 @@
 {
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
@@ -111,11 +118,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertView *messageAlert = [[UIAlertView alloc]
-                                 initWithTitle:@"Row Selected" message:[[_docs objectAtIndex:indexPath.row]name ] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    
-    // Display Alert Message
-    [messageAlert show];
+    [self performSegueWithIdentifier:@"docviewsegue" sender:self];
     
 }
 
