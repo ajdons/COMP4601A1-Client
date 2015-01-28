@@ -17,7 +17,6 @@
 @synthesize  idField, nameField, textField, tagsField, linksField;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configureRestKit];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -34,27 +33,23 @@
     [doc setText:[textField text]];
     [doc setTags:[tagsField text]];
     [doc setLinks:[linksField text]];
+
+    
+    NSMutableDictionary *parameters;
+    [parameters setObject:@"234243" forKey:@"id.text"];
+    [parameters setObject:@456 forKey:@"score"];
+    [parameters setObject:[doc name] forKey:@"name.text"];
+    [parameters setObject:[doc text] forKey:@"text"];
+    [parameters setObject:[doc tags] forKey:@"tags"];
+    [parameters setObject:[doc links] forKey:@"links"];
+    
+    // Serialize the Article attributes then attach a file
+    NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:parameters method:RKRequestMethodPOST path:@"" parameters:nil];
+    
+    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:nil failure:nil];
+    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
+
 }
 
-- (void)configureRestKit
-{
-    // initialize AFNetworking HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda"];
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-    
-    // initialize RestKit
-    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
-    // setup object mapping
-    RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
-    [documentMapping addAttributeMappingsFromDictionary:@{
-                                                          @"id" : @"identifier",
-                                                          @"score" : @"score",
-                                                          @"name": @"name",
-                                                          @"text": @"text",
-                                                          @"tags": @"tags",
-                                                          @"links" : @"links",
-                                                          }];
-    
-}
 
 @end

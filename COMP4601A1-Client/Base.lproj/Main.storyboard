@@ -203,7 +203,6 @@
                                 </state>
                                 <connections>
                                     <action selector="createDoc:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="8He-xu-JYe"/>
-                                    <action selector="searchDoc:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="PDm-ES-U9d"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="95m-6S-I3T">
