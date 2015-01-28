@@ -23,6 +23,10 @@
     [textField setText:[document text]];
     [tagsField setText:[document tags]];
     [linksField setText:[document links]];
+    [nameField setEnabled:false];
+    [textField setEnabled:false];
+    [tagsField setEnabled:false];
+    [linksField setEnabled:false];
     // Do any additional setup after loading the view.
 }
 
@@ -30,9 +34,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)backButton:(id)sender {
-    
-    
+
+-(IBAction)edit:(id)sender
+{
+    [nameField setEnabled:true];
+    [textField setEnabled:true];
+    [tagsField setEnabled:true];
+    [linksField setEnabled:true];
+}
+
+
+-(IBAction)goBack:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

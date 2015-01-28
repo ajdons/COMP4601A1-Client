@@ -134,7 +134,8 @@
     
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"docviewsegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ViewDocController *destViewController = segue.destinationViewController;

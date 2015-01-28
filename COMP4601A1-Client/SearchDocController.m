@@ -8,7 +8,7 @@
 #import <RestKit.h>
 #import "SearchDocController.h"
 #import "Document.h"
-
+#import "SearchResultsController.h"
 @interface SearchDocController ()
 
 @property (nonatomic, strong) NSArray *docs;
@@ -30,70 +30,18 @@
 
 -(IBAction)searchDoc:(id)sender
 {
-    NSString *text = searchBar.text;
-    [self configureRestKit];
-    [self loadDocumentsFromTags:text];
-    
+    [self performSegueWithIdentifier:@"showresultssegue" sender:self];
     
 }
 
--(void) loadDocumentsFromTags: (NSString*) tags
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSString *base =@"http://localhost:8080/COMP4601A1/rest/sda/search/";
-    
-    NSString * path = [NSString stringWithFormat:@"%@%@ ", base, tags];
-    
-    NSLog(@"%@",path);
-    
-    
-    
-    [[RKObjectManager sharedManager] getObjectsAtPath:path
-                                           parameters:nil
-                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  _docs = [mappingResult array];
-                                                  
-                                                 
-                                                  
-                                                  for (Document * doc in _docs){
-                                                      NSLog(@"id: %@", doc.identifier);
-                                                  }
-                                                  
-                                                  
-                                              }
-                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  NSLog(@"What do you mean by 'there is no coffee?': %@", error);
-                                              }];
-    
-    
+    if ([segue.identifier isEqualToString:@"showresultssegue"]) {
+        SearchResultsController *destViewController = segue.destinationViewController;
+        destViewController.tags = searchBar.text;
+    }
 }
 
-- (void)configureRestKit
-{
-    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda"];
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
-    
-    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
-
-    RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
-    [documentMapping addAttributeMappingsFromDictionary:@{
-                                                          @"id" : @"identifier",
-                                                          @"score" : @"score",
-                                                          @"name": @"name",
-                                                          @"text": @"text",
-                                                          @"tags": @"tags",
-                                                          @"links" : @"links",
-                                                          }];
-    
-    RKResponseDescriptor *responseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:documentMapping
-                                                 method:RKRequestMethodGET
-                                            pathPattern:nil
-                                                keyPath:@"document"
-                                            statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    
-    [objectManager addResponseDescriptor:responseDescriptor];
-    
-}
 
 /*
 #pragma mark - Navigation

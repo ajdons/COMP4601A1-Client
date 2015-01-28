@@ -17,4 +17,6 @@
 @property (nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic) IBOutlet UITextField *tagsField;
 @property (nonatomic) IBOutlet UITextField *linksField;
+-(IBAction)edit:(id)sender;
+-(IBAction)goBack:(id)sender;
 @end
