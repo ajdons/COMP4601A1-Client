@@ -9,6 +9,7 @@
 #import "CreateDocController.h"
 #import "Document.h"
 #import <RestKit.h>
+
 @interface CreateDocController ()
 
 @end
@@ -34,6 +35,15 @@
     [doc setText:[textField text]];
     [doc setTags:[tagsField text]];
     [doc setLinks:[linksField text]];
+    
+    // initialize AFNetworking HTTPClient
+    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda/"];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    
+    RKObjectManager* objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    
+    objectManager.requestSerializationMIMEType = RKMIMETypeXML;
+    
 }
 
 - (void)configureRestKit
