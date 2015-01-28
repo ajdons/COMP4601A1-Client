@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface Document : NSObject
 
 {
@@ -36,6 +37,7 @@
 -(void)removeTag:(NSString *)tag;
 -(void)addLink:(NSString *)link;
 -(void)removeLink:(NSString *)link;
+
 
 
 @end

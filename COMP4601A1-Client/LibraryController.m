@@ -19,12 +19,23 @@
 @synthesize tableView;
 
 - (void)viewDidLoad {
+  
+    
+    
     [super viewDidLoad];
+
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+
+    
     
     [self configureRestKit];
     [self loadDocuments];
+   
+
     
-    // Do any additional setup after loading the view, typically from a nib.
+    
+       // Do any additional setup after loading the view, typically from a nib.
 }
 
 -(void) loadDocuments
@@ -33,13 +44,20 @@
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   _docs = [mappingResult array];
-                                                  NSLog(@"DOCS %@", _docs);
+                                                  
+                                                  [self.tableView reloadData];
+                                                  
+                                                  for (Document * doc in _docs){
+                                                      NSLog(@"id: %@", doc.identifier);
+                                                  }
                                                   
                                                   
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   NSLog(@"What do you mean by 'there is no coffee?': %@", error);
                                               }];
+    
+    
 }
 
 - (void)configureRestKit
@@ -48,28 +66,41 @@
     NSURL *baseURL = [NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda"];
     AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
+    [RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
+    [[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeTextXML];
+    
+
+    
     // initialize RestKit
     RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
     // setup object mapping
     RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
-    [documentMapping addAttributeMappingsFromDictionary:@{
-                                                          @"id" : @"identifier",
-                                                          @"score" : @"score",
-                                                          @"name": @"name",
-                                                          @"text": @"text",
-                                                          @"tags": @"tags",
-                                                          @"links" : @"links",
-                                                         }];
+
+    
+    [documentMapping addAttributeMappingsFromDictionary:@{@"id.text" : @"identifier",
+                                                          @"score.text" : @"score",
+                                                          @"name.text" : @"name",
+                                                          @"text.text" : @"text",
+                                                          @"tags.text" : @"tags",
+                                                          @"links.text" : @"links"}];
+
     
     // register mappings with the provider using a response descriptor
     RKResponseDescriptor *responseDescriptor =
     [RKResponseDescriptor responseDescriptorWithMapping:documentMapping
                                                  method:RKRequestMethodGET
                                             pathPattern:nil
-                                                keyPath:@"document"
+                                                keyPath:@"documents.document"
                                             statusCodes:[NSIndexSet indexSetWithIndex:200]];
     
+    
+    
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    
+
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,11 +117,12 @@
 {
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
+    
     
     cell.textLabel.text = [[_docs objectAtIndex:indexPath.row] name];
     return cell;
