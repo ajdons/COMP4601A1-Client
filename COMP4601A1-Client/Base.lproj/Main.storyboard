@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Library-->
@@ -104,19 +104,35 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INH-h3-45d">
+                                <rect key="frame" x="277" y="20" width="46" height="30"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="edit:" destination="xaT-8Z-dS0" eventType="touchUpInside" id="rFS-tL-DUc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iER-RG-UnM">
+                                <rect key="frame" x="277" y="339" width="46" height="30"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.098332063088602761" green="1" blue="0.21117597074519467" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUD-Cv-o52">
-                                <rect key="frame" x="23" y="20" width="35" height="30"/>
+                                <rect key="frame" x="24" y="20" width="35" height="30"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="backButton:" destination="xaT-8Z-dS0" eventType="touchUpInside" id="asX-6I-nPY"/>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="dZl-Hv-sEi"/>
+                                    <action selector="goBack:" destination="xaT-8Z-dS0" eventType="touchUpInside" id="Z92-GU-NdC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="INH-h3-45d" secondAttribute="centerX" id="2bQ-GW-8Xc"/>
                             <constraint firstAttribute="centerX" secondItem="vQ4-Fq-Zh0" secondAttribute="centerX" id="5gA-4D-nXV"/>
                             <constraint firstAttribute="centerX" secondItem="00k-et-X1e" secondAttribute="centerX" id="F8x-2h-kFW"/>
                             <constraint firstAttribute="centerX" secondItem="4fX-mL-fVj" secondAttribute="centerX" id="KZZ-iK-ehZ"/>
@@ -124,6 +140,7 @@
                             <constraint firstItem="4fX-mL-fVj" firstAttribute="leading" secondItem="dvt-46-mQD" secondAttribute="trailing" constant="8" id="QBM-XG-Z3I"/>
                             <constraint firstItem="XfQ-vi-dtu" firstAttribute="leading" secondItem="af0-ra-1PP" secondAttribute="trailing" constant="8" id="T5t-fu-D6t"/>
                             <constraint firstItem="TLI-ly-nOt" firstAttribute="leading" secondItem="0zG-Xr-mpD" secondAttribute="trailing" constant="8" id="X5o-WI-LH0"/>
+                            <constraint firstAttribute="centerX" secondItem="iER-RG-UnM" secondAttribute="centerX" id="YHG-cD-fiC"/>
                             <constraint firstAttribute="centerX" secondItem="TLI-ly-nOt" secondAttribute="centerX" id="tKu-Xi-P4w"/>
                             <constraint firstItem="vQ4-Fq-Zh0" firstAttribute="leading" secondItem="Ofl-3G-mqK" secondAttribute="trailing" constant="8" id="yQ0-Gi-DZ5"/>
                         </constraints>
@@ -169,6 +186,7 @@
                                 </state>
                                 <connections>
                                     <action selector="searchDoc:" destination="gJJ-th-wOh" eventType="touchUpInside" id="nQk-h4-4jG"/>
+                                    <segue destination="wMS-of-Y2m" kind="show" identifier="showresultssegue" id="NON-ge-No4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -189,6 +207,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Icy-SU-mhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="1049"/>
+        </scene>
+        <!--Search Results Controller-->
+        <scene sceneID="2DM-Ow-uhN">
+            <objects>
+                <viewController id="wMS-of-Y2m" customClass="SearchResultsController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WSb-nP-Bcf"/>
+                        <viewControllerLayoutGuide type="bottom" id="qin-Jm-LuW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Os-o0-1WD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kdI-Q0-QMz">
+                                <rect key="frame" x="0.0" y="70" width="600" height="387"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvb-Lk-z7l">
+                                <rect key="frame" x="266" y="473" width="68" height="30"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete All">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctd-at-6Wa">
+                                <rect key="frame" x="24" y="20" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="wMS-of-Y2m" eventType="touchUpInside" id="ZeC-Vg-Lje"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="hvb-Lk-z7l" secondAttribute="centerX" id="GYk-xV-d0C"/>
+                            <constraint firstItem="hvb-Lk-z7l" firstAttribute="top" secondItem="kdI-Q0-QMz" secondAttribute="bottom" constant="8" id="zkk-lI-h7X"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="kdI-Q0-QMz" id="apZ-LK-kOg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5v-9Y-vEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-187" y="778"/>
         </scene>
         <!--Create-->
         <scene sceneID="wg7-f3-ORb">
@@ -237,7 +302,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K0a-jh-69p">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K0a-jh-69p">
                                 <rect key="frame" x="210" y="97" width="180" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -246,6 +311,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Wcy-dD-0bd" secondAttribute="centerX" id="0uj-33-7kI"/>
+                            <constraint firstAttribute="centerX" secondItem="K0a-jh-69p" secondAttribute="centerX" id="9Tv-Bx-2Es"/>
                             <constraint firstAttribute="centerX" secondItem="PwN-cU-Cby" secondAttribute="centerX" id="HS1-pd-UF4"/>
                             <constraint firstAttribute="centerX" secondItem="95m-6S-I3T" secondAttribute="centerX" id="KAf-1Z-1cu"/>
                             <constraint firstAttribute="centerX" secondItem="xh8-z9-cgq" secondAttribute="centerX" id="SWm-zn-nIN"/>

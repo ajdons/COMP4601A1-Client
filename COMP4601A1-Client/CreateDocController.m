@@ -9,6 +9,7 @@
 #import "CreateDocController.h"
 #import "Document.h"
 #import <RestKit.h>
+#import "RKXMLReaderSerialization.h"
 
 @interface CreateDocController ()
 
@@ -34,18 +35,22 @@
     [doc setText:[textField text]];
     [doc setTags:[tagsField text]];
     [doc setLinks:[linksField text]];
-
+    RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
+    [RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
+    [[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeTextXML];
     
-    NSMutableDictionary *parameters;
-    [parameters setObject:@"234243" forKey:@"id.text"];
-    [parameters setObject:@456 forKey:@"score"];
-    [parameters setObject:[doc name] forKey:@"name.text"];
-    [parameters setObject:[doc text] forKey:@"text"];
-    [parameters setObject:[doc tags] forKey:@"tags"];
-    [parameters setObject:[doc links] forKey:@"links"];
+    
+    [documentMapping addAttributeMappingsFromDictionary:@{@"id.text" : @"identifier",
+                                                          @"score.text" : @"score",
+                                                          @"name.text" : @"name",
+                                                          @"text.text" : @"text",
+                                                          @"tags.text" : @"tags",
+                                                          @"links.text" : @"links"}];
+    
     
     // Serialize the Article attributes then attach a file
-    NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:parameters method:RKRequestMethodPOST path:@"" parameters:nil];
+    NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:doc method:RKRequestMethodPOST path:@"" parameters:nil];
+    
     
     RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:nil failure:nil];
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
