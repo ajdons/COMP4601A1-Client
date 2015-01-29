@@ -35,53 +35,35 @@
     [doc setText:[textField text]];
     [doc setTags:[tagsField text]];
     [doc setLinks:[linksField text]];
-    
-    NSDictionary *dic = @{@"id": @"testid",
-                          @"score": @"testscore",
-                          @"name": @"testname",
-                          @"text": @"testext",
-                          @"tags": @"testtags",
-                          @"links": @"testlinks"};
-    
-//    RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
-    //[RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
-    //[[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeFormURLEncoded];
-//    
-//    
-//    [documentMapping addAttributeMappingsFromDictionary:@{@"id.text" : @"identifier",
-//                                                          @"score.text" : @"score",
-//                                                          @"name.text" : @"name",
-//                                                          @"text.text" : @"text",
-//                                                          @"tags.text" : @"tags",
-//                                                          @"links.text" : @"links"}];
-    
-    
-    // Serialize the Article attributes then attach a file
-    
-    NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:doc method:RKRequestMethodPOST path:@"/COMP4601A1/rest/sda" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        [formData appendPartWithFormData:[@"12345" dataUsingEncoding:NSUTF8StringEncoding] name:@"id"];
-        [formData appendPartWithFormData:[@"testname" dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
-        [formData appendPartWithFormData:[@"testtext" dataUsingEncoding:NSUTF8StringEncoding] name:@"text"];
-        [formData appendPartWithFormData:[@"testscore" dataUsingEncoding:NSUTF8StringEncoding] name:@"score"];
-        [formData appendPartWithFormData:[@"testtags" dataUsingEncoding:NSUTF8StringEncoding] name:@"tags"];
-        [formData appendPartWithFormData:[@"testlinks" dataUsingEncoding:NSUTF8StringEncoding] name:@"links"];
-        
-    }];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    
-    
-    [operation start];
+   
+    NSString *post = [NSString stringWithFormat:@"id=%@&score=%@&name=%@&text=%@&tags=%@&links=%@",
+                      [doc identifier], @"33", [doc name], [doc text], [doc tags], [doc links]];
 
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda/"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 
-//    [[RKObjectManager sharedManager] postObject:doc path:@"/COMP4601A1/rest/sda" parameters:dic
-//                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-//                                            NSLog(@"SUCCESS CREATE");
-//                                        }
-//     
-//                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-//                                            NSLog(@"FAILURE CREATE");
-//                                        }
-//     ];
+    
+    NSLog(@"Conenction: %@", conn);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Document successfully added, bitch!"
+                                                       message:@""
+                                                      delegate:self
+                                             cancelButtonTitle:@"OK"
+                                             otherButtonTitles:nil];
+    
+    [alert show];
 }
+
+
 
 @end

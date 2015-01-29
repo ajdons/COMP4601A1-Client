@@ -61,6 +61,8 @@
 -(void) loadDocuments
 {
     NSString *searchPath = [NSString stringWithFormat:@"/COMP4601A1/rest/sda/search/%@", tags];
+//    [RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
+//    [[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeTextXML];
     [[RKObjectManager sharedManager] getObjectsAtPath:searchPath
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
