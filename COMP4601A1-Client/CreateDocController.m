@@ -35,27 +35,53 @@
     [doc setText:[textField text]];
     [doc setTags:[tagsField text]];
     [doc setLinks:[linksField text]];
-    RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
-    [RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
-    [[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeTextXML];
     
+    NSDictionary *dic = @{@"id": @"testid",
+                          @"score": @"testscore",
+                          @"name": @"testname",
+                          @"text": @"testext",
+                          @"tags": @"testtags",
+                          @"links": @"testlinks"};
     
-    [documentMapping addAttributeMappingsFromDictionary:@{@"id.text" : @"identifier",
-                                                          @"score.text" : @"score",
-                                                          @"name.text" : @"name",
-                                                          @"text.text" : @"text",
-                                                          @"tags.text" : @"tags",
-                                                          @"links.text" : @"links"}];
+//    RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
+    //[RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
+    //[[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeFormURLEncoded];
+//    
+//    
+//    [documentMapping addAttributeMappingsFromDictionary:@{@"id.text" : @"identifier",
+//                                                          @"score.text" : @"score",
+//                                                          @"name.text" : @"name",
+//                                                          @"text.text" : @"text",
+//                                                          @"tags.text" : @"tags",
+//                                                          @"links.text" : @"links"}];
     
     
     // Serialize the Article attributes then attach a file
-    NSMutableURLRequest *request = [[RKObjectManager sharedManager] requestWithObject:doc method:RKRequestMethodPOST path:@"" parameters:nil];
+    
+    NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:doc method:RKRequestMethodPOST path:@"/COMP4601A1/rest/sda" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFormData:[@"12345" dataUsingEncoding:NSUTF8StringEncoding] name:@"id"];
+        [formData appendPartWithFormData:[@"testname" dataUsingEncoding:NSUTF8StringEncoding] name:@"name"];
+        [formData appendPartWithFormData:[@"testtext" dataUsingEncoding:NSUTF8StringEncoding] name:@"text"];
+        [formData appendPartWithFormData:[@"testscore" dataUsingEncoding:NSUTF8StringEncoding] name:@"score"];
+        [formData appendPartWithFormData:[@"testtags" dataUsingEncoding:NSUTF8StringEncoding] name:@"tags"];
+        [formData appendPartWithFormData:[@"testlinks" dataUsingEncoding:NSUTF8StringEncoding] name:@"links"];
+        
+    }];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     
-    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:nil failure:nil];
-    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
+    [operation start];
 
+
+//    [[RKObjectManager sharedManager] postObject:doc path:@"/COMP4601A1/rest/sda" parameters:dic
+//                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+//                                            NSLog(@"SUCCESS CREATE");
+//                                        }
+//     
+//                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+//                                            NSLog(@"FAILURE CREATE");
+//                                        }
+//     ];
 }
-
 
 @end

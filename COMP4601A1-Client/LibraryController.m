@@ -28,7 +28,6 @@
     self.tableView.dataSource = self;
 
     
-    
     [self configureRestKit];
     [self loadDocuments];
    
@@ -37,6 +36,15 @@
     
        // Do any additional setup after loading the view, typically from a nib.
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"AYYYY");
+    NSLog(@"AYYYY");
+    [self loadDocuments];
+    [super viewWillAppear:animated];
+    [self.tableView reloadData]; // to reload selected cell
+}
+
 
 -(void) loadDocuments
 {

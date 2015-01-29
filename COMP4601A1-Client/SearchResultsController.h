@@ -11,5 +11,6 @@
 @interface SearchResultsController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 -(IBAction)goBack:(id)sender;
+-(IBAction)deleteAll:(id)sender;
 @property (strong, nonatomic) NSString *tags;
 @end

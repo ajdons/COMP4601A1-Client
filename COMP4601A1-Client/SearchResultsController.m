@@ -76,14 +76,14 @@
                                                   
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  [self sendBackWithAlert];
+                                                  [self alertNoDocumentsFound];
                                                   NSLog(@"What do you mean by 'there is no coffee?': %@", error);
                                               }];
     
     
 }
 
--(void) sendBackWithAlert
+-(void) alertNoDocumentsFound
 {
     UIAlertView *theAlert = [[UIAlertView alloc] initWithTitle:@"No documents found"
                                                        message:@"Try another tag."
@@ -94,10 +94,38 @@
     [theAlert show];
 }
 
+-(void) alertDocumentsDeletedSuccessfully
+{
+    UIAlertView *theAlert = [[UIAlertView alloc] initWithTitle:@"Documents deleted successfully!"
+                                                       message:@""
+                                                      delegate:self
+                                             cancelButtonTitle:@"OK"
+                                             otherButtonTitles:nil];
+    
+    [theAlert show];
+}
+
 -(IBAction)goBack:(id)sender
 {
-    NSLog(@"Button pressed");
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(IBAction)deleteAll:(id)sender
+{
+    NSString *searchPath = [NSString stringWithFormat:@"/COMP4601A1/rest/sda/delete/%@", tags];
+
+    [[[RKObjectManager sharedManager] HTTPClient] getPath:searchPath
+                                               parameters:nil
+                                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                      // handle success
+                                                      NSLog(@"GREAT SUCCESS");
+                                                      [self alertDocumentsDeletedSuccessfully];
+                                                  }
+                                                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                      // response code is in operation.response.statusCode
+                                                      NSLog(@"FAILURE:");
+                                                      NSLog(@"%ld", (long)operation.response.statusCode);
+                                                  }];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
