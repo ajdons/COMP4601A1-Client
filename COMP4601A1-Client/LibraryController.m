@@ -56,7 +56,7 @@
                                                   [self.tableView reloadData];
                                                   
                                                   for (Document * doc in _docs){
-                                                      NSLog(@"id: %@", doc.identifier);
+                                                      NSLog(@"id: %@", doc.tags);
                                                   }
                                                   
                                                   

@@ -7,6 +7,7 @@
 //
 
 #import "ViewDocController.h"
+#import <RestKit.h>
 
 @interface ViewDocController ()
 
@@ -47,6 +48,24 @@
 -(IBAction)goBack:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(IBAction)deleteDoc:(id)sender
+{
+    NSString *searchPath = [NSString stringWithFormat:@"/COMP4601A1/rest/sda/%@", [document identifier]];
+    
+    [[[RKObjectManager sharedManager] HTTPClient] deletePath:searchPath
+                                               parameters:nil
+                                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                      // handle success
+                                                      NSLog(@"GREAT SUCCESS");
+                                                  }
+                                                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                      // response code is in operation.response.statusCode
+                                                      NSLog(@"FAILURE:");
+                                                      NSLog(@"%ld", (long)operation.response.statusCode);
+                                                  }];
 }
 
 /*

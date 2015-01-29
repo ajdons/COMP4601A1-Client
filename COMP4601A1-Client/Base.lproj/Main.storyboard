@@ -120,7 +120,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUD-Cv-o52">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUD-Cv-o52">
                                 <rect key="frame" x="24" y="20" width="35" height="30"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -129,18 +129,30 @@
                                     <action selector="goBack:" destination="xaT-8Z-dS0" eventType="touchUpInside" id="Z92-GU-NdC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lH-52-DnR">
+                                <rect key="frame" x="538" y="20" width="46" height="30"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteDoc:" destination="xaT-8Z-dS0" eventType="touchUpInside" id="kox-jV-DQC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="INH-h3-45d" secondAttribute="centerX" id="2bQ-GW-8Xc"/>
                             <constraint firstAttribute="centerX" secondItem="vQ4-Fq-Zh0" secondAttribute="centerX" id="5gA-4D-nXV"/>
                             <constraint firstAttribute="centerX" secondItem="00k-et-X1e" secondAttribute="centerX" id="F8x-2h-kFW"/>
+                            <constraint firstItem="INH-h3-45d" firstAttribute="leading" secondItem="mUD-Cv-o52" secondAttribute="trailing" constant="80" id="JX4-dK-6kC"/>
                             <constraint firstAttribute="centerX" secondItem="4fX-mL-fVj" secondAttribute="centerX" id="KZZ-iK-ehZ"/>
                             <constraint firstAttribute="centerX" secondItem="XfQ-vi-dtu" secondAttribute="centerX" id="L2H-ip-WXg"/>
                             <constraint firstItem="4fX-mL-fVj" firstAttribute="leading" secondItem="dvt-46-mQD" secondAttribute="trailing" constant="8" id="QBM-XG-Z3I"/>
                             <constraint firstItem="XfQ-vi-dtu" firstAttribute="leading" secondItem="af0-ra-1PP" secondAttribute="trailing" constant="8" id="T5t-fu-D6t"/>
                             <constraint firstItem="TLI-ly-nOt" firstAttribute="leading" secondItem="0zG-Xr-mpD" secondAttribute="trailing" constant="8" id="X5o-WI-LH0"/>
                             <constraint firstAttribute="centerX" secondItem="iER-RG-UnM" secondAttribute="centerX" id="YHG-cD-fiC"/>
+                            <constraint firstItem="3lH-52-DnR" firstAttribute="leading" secondItem="INH-h3-45d" secondAttribute="trailing" constant="80" id="hZS-SQ-9Hk"/>
                             <constraint firstAttribute="centerX" secondItem="TLI-ly-nOt" secondAttribute="centerX" id="tKu-Xi-P4w"/>
                             <constraint firstItem="vQ4-Fq-Zh0" firstAttribute="leading" secondItem="Ofl-3G-mqK" secondAttribute="trailing" constant="8" id="yQ0-Gi-DZ5"/>
                         </constraints>
@@ -224,16 +236,6 @@
                                 <rect key="frame" x="0.0" y="70" width="600" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvb-Lk-z7l">
-                                <rect key="frame" x="266" y="473" width="68" height="30"/>
-                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Delete All">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteAll:" destination="wMS-of-Y2m" eventType="touchUpInside" id="eBP-YP-kOT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctd-at-6Wa">
                                 <rect key="frame" x="24" y="20" width="35" height="30"/>
                                 <state key="normal" title="Back">
@@ -243,11 +245,21 @@
                                     <action selector="goBack:" destination="wMS-of-Y2m" eventType="touchUpInside" id="ZeC-Vg-Lje"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvb-Lk-z7l">
+                                <rect key="frame" x="266" y="465" width="68" height="30"/>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete All">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteAll:" destination="wMS-of-Y2m" eventType="touchUpInside" id="eBP-YP-kOT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="hvb-Lk-z7l" secondAttribute="centerX" id="GYk-xV-d0C"/>
-                            <constraint firstItem="hvb-Lk-z7l" firstAttribute="top" secondItem="kdI-Q0-QMz" secondAttribute="bottom" constant="8" id="zkk-lI-h7X"/>
+                            <constraint firstItem="hvb-Lk-z7l" firstAttribute="top" secondItem="kdI-Q0-QMz" secondAttribute="bottom" constant="5" id="zkk-lI-h7X"/>
                         </constraints>
                     </view>
                     <connections>

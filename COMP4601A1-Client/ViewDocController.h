@@ -19,4 +19,5 @@
 @property (nonatomic) IBOutlet UITextField *linksField;
 -(IBAction)edit:(id)sender;
 -(IBAction)goBack:(id)sender;
+-(IBAction)deleteDoc:(id)sender;
 @end
