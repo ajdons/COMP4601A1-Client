@@ -10,6 +10,7 @@
 #import <RestKit/RestKit.h>
 #import "RKXMLReaderSerialization.h"
 #import "XMLReader.h"
+#import "Document.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self configureRestKit];
     return YES;
 }
 
@@ -44,5 +46,49 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)configureRestKit
+{
+    // initialize AFNetworking HTTPClient
+    NSURL *baseURL = [NSURL URLWithString:@"http://localhost:8080/COMP4601A1/rest/sda"];
+    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    
+    [RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
+    [[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeTextXML];
+    
+    
+    
+    // initialize RestKit
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    // setup object mapping
+    RKObjectMapping *documentMapping = [RKObjectMapping mappingForClass:[Document class]];
+    
+    
+    [documentMapping addAttributeMappingsFromDictionary:@{@"id.text" : @"identifier",
+                                                          @"score.text" : @"score",
+                                                          @"name.text" : @"name",
+                                                          @"text.text" : @"text",
+                                                          @"tags.text" : @"tags",
+                                                          @"links.text" : @"links"}];
+    
+    
+    // register mappings with the provider using a response descriptor
+    RKResponseDescriptor *responseDescriptor =
+    [RKResponseDescriptor responseDescriptorWithMapping:documentMapping
+                                                 method:RKRequestMethodGET
+                                            pathPattern:nil
+                                                keyPath:@"documents.document"
+                                            statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    
+    
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
+    
+    
+    
+    
+}
+
 
 @end
