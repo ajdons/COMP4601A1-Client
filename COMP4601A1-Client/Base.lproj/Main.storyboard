@@ -32,7 +32,7 @@
                             <constraint firstAttribute="centerX" secondItem="ZRY-Zn-VWH" secondAttribute="centerX" id="lIr-jP-LSg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Library" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Library" image="library" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="tableView" destination="Efu-rF-VuR" id="hnt-vS-ge4"/>
                         <segue destination="xaT-8Z-dS0" kind="show" identifier="docviewsegue" id="HN8-e4-0yZ"/>
@@ -199,7 +199,7 @@
                             <constraint firstAttribute="centerX" secondItem="u6y-ij-mUK" secondAttribute="centerX" id="zFi-aB-H0d"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="sm2-bN-67h"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="sm2-bN-67h"/>
                     <connections>
                         <outlet property="searchBar" destination="u6y-ij-mUK" id="bpp-bF-oYs"/>
                     </connections>
@@ -230,6 +230,9 @@
                                 <state key="normal" title="Delete All">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="deleteAll:" destination="wMS-of-Y2m" eventType="touchUpInside" id="eBP-YP-kOT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctd-at-6Wa">
                                 <rect key="frame" x="24" y="20" width="35" height="30"/>
@@ -253,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5v-9Y-vEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-187" y="778"/>
+            <point key="canvasLocation" x="1428" y="1049"/>
         </scene>
         <!--Create-->
         <scene sceneID="wg7-f3-ORb">
@@ -319,7 +322,7 @@
                             <constraint firstAttribute="centerX" secondItem="A0N-zA-4bc" secondAttribute="centerX" id="xDe-LW-jWp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Create" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Create" image="createdoc" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="idField" destination="K0a-jh-69p" id="TMe-CA-4mq"/>
                         <outlet property="linksField" destination="cjA-NM-Axn" id="E3K-cM-RmI"/>
@@ -354,7 +357,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="createdoc" width="30" height="30"/>
+        <image name="library" width="29" height="30"/>
+        <image name="search" width="30" height="30"/>
     </resources>
 </document>
