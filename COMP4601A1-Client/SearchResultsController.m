@@ -61,25 +61,19 @@
 -(void) loadDocuments
 {
     NSString *searchPath = [NSString stringWithFormat:@"/COMP4601A1/rest/sda/search/%@", tags];
-//    [RKMIMETypeSerialization registerClass:[RKXMLReaderSerialization class] forMIMEType:@"application/xml"];
-//    [[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:RKMIMETypeTextXML];
+    
+    [[RKObjectManager sharedManager] setAcceptHeaderWithMIMEType:@"application/xml"];
+    
     [[RKObjectManager sharedManager] getObjectsAtPath:searchPath
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   _docs = [mappingResult array];
                                                   
                                                   [self.tableView reloadData];
-                                                  
-                                                  for (Document * doc in _docs){
-                                                      NSLog(@"In Results");
-                                                      NSLog(@"id: %@", doc.identifier);
-                                                  }
-                                                  
-                                                  
                                               }
                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   [self alertNoDocumentsFound];
-                                                  NSLog(@"What do you mean by 'there is no coffee?': %@", error);
+                                                  NSLog(@"Error: \n%@", error);
                                               }];
     
     
@@ -119,8 +113,6 @@
     [[[RKObjectManager sharedManager] HTTPClient] getPath:searchPath
                                                parameters:nil
                                                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                                      // handle success
-                                                      NSLog(@"GREAT SUCCESS");
                                                       [self alertDocumentsDeletedSuccessfully];
                                                   }
                                                   failure:^(AFHTTPRequestOperation *operation, NSError *error) {

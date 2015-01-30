@@ -73,7 +73,7 @@
         
     NSLog(@"Conenction: %@", conn);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Document successfully updated, bitch!"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Document successfully updated"
                                                     message:@""
                                                    delegate:self
                                           cancelButtonTitle:@"OK"
